@@ -8,7 +8,7 @@ def registrar_visita(request):
         rut = request.POST.get('rut')
         motivo = request.POST.get('motivo')
 
-        # Validación básica con estructuras de decisión
+        # Validación básica
         if nombre and rut and motivo:
             Visita.objects.create(
                 nombre=nombre,
@@ -17,7 +17,6 @@ def registrar_visita(request):
             )
             return redirect('lista_visitas')
         else:
-            # Manejo de error si faltan datos
             return render(request, 'registro_visitas/formulario_visita.html', {
                 'error': 'Todos los campos son obligatorios.'
             })
