@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitas del Día</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen py-8">
+    <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Visitas del Día</h1>
+        
+        {% if visitas %}
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-200">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="py-2 px-4 border-b text-left">Nombre</th>
+                            <th class="py-2 px-4 border-b text-left">RUT</th>
+                            <th class="py-2 px-4 border-b text-left">Motivo</th>
+                            <th class="py-2 px-4 border-b text-left">Entrada</th>
+                            <th class="py-2 px-4 border-b text-left">Salida</th>
+                            <th class="py-2 px-4 border-b text-left">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for visita in visitas %}
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-2 px-4 border-b">{{ visita.nombre }}</td>
+                                <td class="py-2 px-4 border-b">{{ visita.rut }}</td>
+                                <td class="py-2 px-4 border-b">{{ visita.motivo }}</td>
+                                <td class="py-2 px-4 border-b">{{ visita.hora_entrada|date:"H:i" }}</td>
+                                <td class="py-2 px-4 border-b">
+                                    {% if visita.hora_salida %}
+                                        {{ visita.hora_salida|date:"H:i" }}
+                                    {% else %}
+                                        <span class="text-red-500">En curso</span>
+                                    {% endif %}
+                                </td>
+                                <td class="py-2 px-4 border-b">
+                                    {% if not visita.hora_salida %}
+                                        <a href="{% url 'registrar_salida' visita.id %}" 
+                                            class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded text-sm transition duration-200">
+                                            Registrar Salida
+                                        </a>
+                                    {% else %}
+                                        <span class="text-green-500 text-sm">Completada</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="text-center py-8">
+                <p class="text-gray-500 text-lg">No hay visitas registradas hoy.</p>
+            </div>
+        {% endif %}
+        
+        <div class="mt-6 text-center">
+            <a href="{% url 'registrar_visita' %}" 
+                class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md transition duration-200">
+                Volver al registro
+            </a>
+        </div>
+    </div>
+</body>
+</html>
