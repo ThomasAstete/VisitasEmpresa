@@ -32,7 +32,6 @@ Tecnologías utilizadas:
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
-    <!-- Header -->
     <header class="bg-white shadow-sm">
         <div class="max-w-4xl mx-auto px-4 py-6">
             <div class="flex items-center justify-between">
@@ -55,10 +54,8 @@ Tecnologías utilizadas:
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="max-w-2xl mx-auto px-4 py-8">
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-            <!-- Form Header -->
             <div class="bg-gradient-to-r from-blue-500 to-indigo-600 px-6 py-8">
                 <div class="flex items-center justify-between">
                     <div>
@@ -85,8 +82,6 @@ Tecnologías utilizadas:
                 {% endif %}
 
                 <!-- FORMULARIO PRINCIPAL -->
-                <!-- method="post" envía datos por POST al servidor -->
-                <!-- class="space-y-6" aplica espaciado vertical entre elementos -->
                 <form method="post" class="space-y-6">
                     <!-- CSRF TOKEN: Protección contra ataques Cross-Site Request Forgery -->
                     {% csrf_token %}
@@ -178,11 +173,6 @@ Tecnologías utilizadas:
             </div>
         </div>
     </main>
-
-    <!-- Footer -->
-    <footer class="max-w-4xl mx-auto px-4 py-6 text-center text-gray-600">
-        <p>Sistema desarrollado para evaluación de Programación Backend</p>
-    </footer>
 
     <!-- 
     JAVASCRIPT PARA VALIDACIÓN Y FORMATO DE RUT
