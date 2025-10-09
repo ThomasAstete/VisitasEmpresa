@@ -112,7 +112,7 @@ def registrar_visita(request):
             })
 
     # Mostrar formulario vacío (GET)
-    return render(request, 'registro_visitas/formulario_visita.html')
+    return render(request, 'registro_visitas/formulario_visita.html ', {'form' : form})
 
 def lista_visitas(request):
     """
